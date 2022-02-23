@@ -13,7 +13,7 @@ public class CarDecorator implements Car{
         this.car=c;
     }
 
-    public CarDecorator(){};
+    public CarDecorator(){}
 
     @Override
     public void assemble() {
