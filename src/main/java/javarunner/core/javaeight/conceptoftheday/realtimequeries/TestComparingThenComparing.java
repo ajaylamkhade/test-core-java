@@ -23,11 +23,11 @@ public class TestComparingThenComparing {
         ArrayList<Player> list = new ArrayList<>();
         list.add( new Player(2, "Lokesh", "Gupta") );
         list.add( new Player(1, "Alex", "Gussin") );
-        list.add( new Player(4, "Brian", "Sux") );
+        list.add( new Player(4, "Brian", "Wux") );
         list.add( new Player(5, "Neon", "Piper") );
         list.add( new Player(3, "David", "Beckham") );
         list.add( new Player(7, "Alex", "Beckham") );
-        list.add( new Player(6, "Brian", "Suxena") );
+        list.add( new Player(6, "Brian", "Tuxena") );
         return list;
     }
 }
