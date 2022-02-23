@@ -30,7 +30,9 @@ public class TestRealTimeQueries {
       //Optional<Employee> hihestPaidEmployee = employeeList.stream().max(( e1, e2) ->Double.valueOf(e1.getSalary()).compareTo(Double.valueOf(e2.getSalary()))) ;
       //List<Employee> hihestPaidEmployee= employeeList.stream().sorted(Comparator.comparingDouble((Employee e)->e.getSalary()).reversed()).limit(1).collect(Collectors.toList());
       Optional<Employee> hihestPaidEmployee =employeeList.stream().collect(Collectors.maxBy(Comparator.comparingDouble(s->s.getSalary())));
-      System.out.println(hihestPaidEmployee);
+      //Optional<Employee> hihestPaidEmployee = employeeList.stream().max(Comparator.comparing(e ->e.getSalary())) ;
+      System.out.println(" higest salary :"+hihestPaidEmployee);
+
       //Get the names of all employees who have joined after 2015?
        List<String> nameOfEmployeesJoinedAfter2015 = employeeList.stream().filter(e -> e.getYearOfJoining() >2015).map(e ->e.getName()).collect(Collectors.toList());
          nameOfEmployeesJoinedAfter2015.forEach( s ->System.out.println(s));
