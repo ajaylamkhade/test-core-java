@@ -1,4 +1,4 @@
-package javarunner.core;
+package javarunner.core.hash;
 
 import java.util.HashMap;
 import java.util.Map;

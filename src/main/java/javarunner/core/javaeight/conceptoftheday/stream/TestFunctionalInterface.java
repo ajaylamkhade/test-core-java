@@ -41,7 +41,12 @@ public class TestFunctionalInterface {
         Supplier<Student> studentSupplier = () -> new Student(27,"Pushparaj","A");
         studentList.add(studentSupplier.get());
         System.out.println(studentList.get(0).getName());
+
+        Consumer <String> consumerStr = (String s ) -> System.out.println("Hey! "+s);
+        consumerStr.accept("Hello Consumer");
+
     }
+
 }
 
 @FunctionalInterface
