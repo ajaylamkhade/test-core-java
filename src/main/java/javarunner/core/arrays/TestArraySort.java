@@ -1,13 +1,30 @@
 package javarunner.core.arrays;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class TestArraySort {
 
     public static void main(String[] args) {
-        int numberArray1 [] = {5,4,6,3,7,1,8,2};
-        int numberArray2 [] = {11,9,10,};
+        int numberArray1 [] = {7,8,5,1,0,10,5,1};
+        int numberArray2 [] = {9,2,11};
         int resultArray [] = new int[numberArray1.length+numberArray2.length];
+        String strArray [] ={"a" ,"b","c"};
+
+
+        //sorting using java8
+        IntStream intStream =Arrays.stream(mergeTwoArrays(numberArray1,numberArray2,resultArray));
+        //intStream.sorted().forEach(n-> System.out.print(n +"  "));
+        //System.out.println("\n");
+        //reverse order
+        List<Integer>  reversedOrderList = intStream.boxed().sorted(Comparator.comparingInt((Integer i) -> Integer.valueOf(i)).reversed()).collect(Collectors.toList());
+        System.out.println("reversed order list :" +reversedOrderList);
+
 
 
        // System.out.println("Sorted Array :" + Arrays.toString(sortArraysInAscendingOrder(numberArray1)));

@@ -30,7 +30,7 @@ public class TestSplitIterator {
         System.out.println("-----------------------");
         System.out.println("From 2'nd SplitIterator");
         anotherLanguageSplitIterator1.forEachRemaining(s -> System.out.println(s));
-
+       System.out.println("-----------------------------------");
       //estimateSize():It returns the estimate of number of elements yet to be traversed by the Spliterator.
         List<String> languageList2 = Arrays.asList("Java", "C", "C++", "Python", "Scala", "Kotlin");
         Spliterator<String> languageSpliterator2 = languageList2.spliterator();
@@ -58,7 +58,7 @@ public class TestSplitIterator {
          */
         List<String> languageList6 = Arrays.asList("Ajay", "Dhawal", "Nachiket");
         Spliterator<String> languageSpliterator6 = languageList6.spliterator();
-        System.out.println(languageSpliterator6.getComparator());
+      //  System.out.println(languageSpliterator6.getComparator());
 
     }
 }

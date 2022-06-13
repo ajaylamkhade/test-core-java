@@ -6,7 +6,7 @@ public class Main1 {
 
         C c = new C();
         System.out.println(c.s);
-
+        System.out.println(c);
 
     }
 

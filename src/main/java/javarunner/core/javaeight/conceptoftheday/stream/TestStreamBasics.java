@@ -3,6 +3,7 @@ package javarunner.core.javaeight.conceptoftheday.stream;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class TestStreamBasics {
@@ -42,6 +43,11 @@ public class TestStreamBasics {
 */
         //students.stream().map(student -> student.getName()).sorted((String name1,String name2) -> name2.compareTo(name1)).forEach(System.out::println);
         students.stream().sorted(Comparator.comparing((s1 ->s1.getRollNumber()),Comparator.reverseOrder())).collect(Collectors.toList()).stream().map(s1->s1.getRollNumber()).forEach(System.out::println);
+       List<Student> studentList = students.stream().sorted(Comparator.comparingInt((Student s)-> s.getRollNumber()).reversed()).collect(Collectors.toList());
+       studentList.forEach(emp -> System.out.println(emp.toString()));
+
+      Optional<Student> student = studentList.stream().max(Comparator.comparingInt(r ->r.getRollNumber()));
+        System.out.println("student with max roll number: "+student.toString());
 
     }
 }

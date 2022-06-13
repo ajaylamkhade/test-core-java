@@ -1,8 +1,7 @@
 package javarunner.core.javaeight.conceptoftheday.stream;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -45,6 +44,13 @@ public class TestFunctionalInterface {
         Consumer <String> consumerStr = (String s ) -> System.out.println("Hey! "+s);
         consumerStr.accept("Hello Consumer");
 
+        UPIPayment upiPayment = amt -> printTheAmount(amt);
+        upiPayment.doPayment(10);
+
+    }
+
+    private static void printTheAmount (int amt) {
+        System.out.println("Amount Received: "+amt);
     }
 
 }
@@ -56,4 +62,16 @@ interface CheckFunctioalInterface{
     }
 
     void pleaseDo();
+}
+//optional to use @FunctionalInterface annotation
+interface UPIPayment{
+    void doPayment(int amt);
+    default double getCoupon(){
+        return new Random().nextDouble();
+    }
+    static String datePattern(String pattern){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(new Date());
+    }
+
 }

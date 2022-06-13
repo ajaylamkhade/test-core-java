@@ -6,7 +6,7 @@ public class TestInterface {
         InterfaceA interfaceA = new ClassA();
         interfaceA.method2();
 
-        InterfaceB.method3();
+       //InterfaceB.method3();
 
     }
 }

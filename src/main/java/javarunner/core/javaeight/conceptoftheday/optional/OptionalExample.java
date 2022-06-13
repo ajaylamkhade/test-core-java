@@ -5,13 +5,14 @@ import java.util.Optional;
 public class OptionalExample {
     public static void main(String[] args) {
         String str [] = new String[10];
-        str [5] = "JAVA OPTIONAL CLASS EXAMPLE";
+        str [9] = "JAVA OPTIONAL CLASS EXAMPLE";
         //it returns empty instance of optioncal class
         Optional<String> empty = Optional.empty();
         System.out.println("Empty: "+empty);
 
         // It returns a non-empty Optional
-        Optional<String> value= Optional.of(str[5]);
+        Optional<String> value= Optional.of(str[9]);
+        System.out.println("str[9]: "+value);
         System.out.println("filtered value: "+value.filter(s -> s.equals("Abc")));
         //If value is present, it returns an Optional otherwise returns an empty Optional
         System.out.println("filtered value: "+value.filter(s -> s.equals("JAVA OPTIONAL CLASS EXAMPLE")));
@@ -23,13 +24,12 @@ public class OptionalExample {
         System.out.println("Is value present: "+value.isPresent());
 
         // It returns non-empty Optional if value is present, otherwise returns an empty Optional
-        System.out.println("Nullable Optional: "+Optional.ofNullable(str[5]).get());
+        System.out.println("Nullable Optional: "+Optional.ofNullable(str[9]).get());
         // It returns value if available, otherwise returns specified value,
         //value = Optional.ofNullable(null);
         System.out.println("orElse: "+value.orElse("Value is not present"));
         System.out.println("orElse: "+empty.orElse("Value is not present"));
         // printing value by using method reference
         value.ifPresent(System.out::println);
-
     }
 }

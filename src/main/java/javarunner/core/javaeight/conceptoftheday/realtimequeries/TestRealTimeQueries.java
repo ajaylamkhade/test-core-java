@@ -48,8 +48,10 @@ public class TestRealTimeQueries {
         System.out.println(youngestEmpInProdDevDept);
         //Who has the most working experience in the organization?
         //Optional<Employee> mostWorkingExperience = employeeList.stream().min(Comparator.comparingInt(e ->Integer.valueOf(e.yearOfJoining)));
-        Optional<Employee> mostWorkingExperience = employeeList.stream().sorted(Comparator.comparingInt(e ->e.getYearOfJoining())).findFirst();
-        System.out.println(mostWorkingExperience);
+        //Optional<Employee> mostWorkingExperience = employeeList.stream().sorted(Comparator.comparingInt(e ->e.getYearOfJoining())).findFirst();
+        Optional<Employee> mostWorkingExperience = employeeList.stream().collect(Collectors.minBy(Comparator.comparingInt(e -> e.getYearOfJoining())));
+
+        System.out.println("mostWorkingExperience : "+mostWorkingExperience);
         //How many male and female employees are there in the sales and marketing team?
         Map<String,Long> numberOfMaleFemaleEmpInSalesMarketingDept = employeeList.stream().filter(e -> "Sales And Marketing".equals(e.getDepartment())).collect(Collectors.groupingBy(e ->e.getGender(),Collectors.counting()));
         System.out.println(numberOfMaleFemaleEmpInSalesMarketingDept);
@@ -64,7 +66,7 @@ public class TestRealTimeQueries {
             System.out.println("Names of all employees in : "+entry.getKey());
           System.out.println("---------------------------------------------");
           for (Employee employee :entry.getValue()){
-              System.out.println(employee);
+              System.out.println(employee.getName());
           }
         }
       //What is the average salary and total salary of the whole organization?
@@ -87,8 +89,17 @@ public class TestRealTimeQueries {
             }
         }
      //Who is the oldest employee in the organization? What is his age and which department he belongs to?
-      Optional<Employee>  oldestEmployee = employeeList.stream().collect(Collectors.maxBy(Comparator.comparingInt(e->e.getAge())));
-      System.out.println("Name of oldest Employee: "+oldestEmployee.get().getName()+ " his age: "+oldestEmployee.get().getAge()+" department: "+oldestEmployee.get().getDepartment());
+        Optional<Employee>  oldestEmployee = employeeList.stream().collect(Collectors.maxBy(Comparator.comparingInt(e->e.getAge())));
+        //Optional<Employee>  oldestEmployee = employeeList.stream().sorted(Comparator.comparingInt((Employee e)->e.getAge()).reversed()).findFirst();
+       System.out.println("Name of oldest Employee: "+oldestEmployee.get().getName()+ " his age: "+oldestEmployee.get().getAge()+" department: "+oldestEmployee.get().getDepartment());
+        //find highest paid employee from each department
+        Map<String, Optional<Employee>> highestPaidEmpInEachDept = employeeList.stream().collect(
+                Collectors.groupingBy(
+                        employee -> employee.getDepartment(),
+                        Collectors.maxBy(Comparator.comparingDouble(employee -> employee.getSalary())))
+        );
+
+        System.out.println("Highest Paid employee in each department: "+highestPaidEmpInEachDept);
 
     }
 

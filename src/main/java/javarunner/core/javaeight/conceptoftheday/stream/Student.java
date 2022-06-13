@@ -34,4 +34,13 @@ public class Student {
     public void setDivision(String division) {
         this.division = division;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "rollNumber=" + rollNumber +
+                ", name='" + name + '\'' +
+                ", division='" + division + '\'' +
+                '}';
+    }
 }
