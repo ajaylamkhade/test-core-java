@@ -12,8 +12,11 @@ public class TestComparingThenComparing {
         List<Player> playerList = suplierPlayerList.get();
 
         //sort the player list by first name ,if first name is same then sort by last name
-        List<Player> sortedPlayerList = playerList.stream().sorted(Comparator.comparing((Player p) -> p.getFirstName()).thenComparing((Player p) ->p.getLastName())).collect(Collectors.toList());
+        List<Player> sortedPlayerList = playerList.stream().sorted(Comparator.comparing((Player p) ->p.getFirstName()).
+                thenComparing(Comparator.comparing((Player p) -> p.getLastName()))).collect(Collectors.toList());
+
         sortedPlayerList.forEach(s -> System.out.println(s));
+        playerList.stream().sorted(Comparator.comparing(Player::getFirstName).thenComparing(Comparator.comparing(Player::getLastName))).collect(Collectors.toList());
 
     }
 

@@ -24,9 +24,11 @@ public class CheckFunctionalInterface {
 
   }
 
+
     interface MyInterface <T,R> {
 
         Integer myMethod(String str); //throws IOException;
+
     }
 
     private static Integer myMethod1(String str) throws IOException{

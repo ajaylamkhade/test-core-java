@@ -15,9 +15,10 @@ public class GetcountOfEachCharInString {
         for (String str1: str.split("")){
             System.out.println(str1);
         }*/
-        Stream<String> strStream = Arrays.stream(str.split(""));
+        //Stream<String> strStream = Arrays.stream(str.split("")); or
+       Stream<String> stream1= Stream.of(str.split(""));
         Map<String, Long> countMap =
-                strStream.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                stream1.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(countMap);
     }
 }

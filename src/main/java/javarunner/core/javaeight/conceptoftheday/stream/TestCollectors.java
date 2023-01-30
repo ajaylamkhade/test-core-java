@@ -1,6 +1,7 @@
 package javarunner.core.javaeight.conceptoftheday.stream;
 
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class TestCollectors {
@@ -26,6 +27,8 @@ public class TestCollectors {
         System.out.println(nameAndPercentageMap);
         //collecting first three students into linkedlist
         LinkedList<Student> studentLinkedList = studentList.stream().limit(3).collect(Collectors.toCollection( ()-> new LinkedList<>()));
+        LinkedList<Student> studentLinkedList1 = studentList.stream().limit(3).collect(Collectors.toCollection(LinkedList :: new));
+
         System.out.println(studentLinkedList);
         //Collecting the names of all students joined as string.delimited by comma ','
        String nameDelimited = studentList.stream().map(s ->s.getName()).collect(Collectors.joining(" ** "));
@@ -38,7 +41,11 @@ public class TestCollectors {
        System.out.println(highestPercentage);
         //collecting highest percentage using collector
         Optional<Double> highestPercentageOptional = studentList.stream().map(s -> s.getPercentage()).collect(Collectors.maxBy(Comparator.naturalOrder()));
+        Optional<Double> highestPercentageOptional1 = studentList.stream().map(s -> s.getPercentage()).collect(Collectors.maxBy(Comparator.comparing(s ->s)));
+
         System.out.println(highestPercentageOptional);
+        System.out.println("highestPercentageOptional1 :" +highestPercentageOptional1);
+
         //collecting lowest percentage
         Double lowestPercentage = studentList.stream().map(s -> s.getPercentage()).collect(Collectors.minBy(Comparator.naturalOrder())).get();
         System.out.println(lowestPercentage);

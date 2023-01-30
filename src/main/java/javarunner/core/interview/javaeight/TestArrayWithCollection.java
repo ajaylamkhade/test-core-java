@@ -1,9 +1,9 @@
 package javarunner.core.interview.javaeight;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 //calculate the occurrance of
 class TestArrayWithCollection {
@@ -14,5 +14,13 @@ class TestArrayWithCollection {
         HashMap<String,Integer> hashMap = new HashMap();
         list.stream().forEach(str ->hashMap.put(str, Collections.frequency(list,str)));
         System.out.println(hashMap);
+
+        Stream<String> stringStream =Arrays.stream(arr);
+
+        Map<String ,Long>  hashMap1 =stringStream.collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        System.out.println(hashMap1);
+
+
+
     }
 }

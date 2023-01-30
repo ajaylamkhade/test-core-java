@@ -13,12 +13,12 @@ public class TestMapSortingByKey {
         String greetArray [] = greeting.split(" ");
         Integer sequence=0;
         for(String s: greetArray){
-            System.out.println(s);
+           // System.out.println(s);
             sequence ++;
             greetMap.put(sequence,s);
 
         }
-        System.out.println(greetMap);
+       // System.out.println(greetMap);
 
         List<Integer> sortedKeys = new ArrayList<>(greetMap.keySet());
         Collections.sort(sortedKeys, new Comparator<Integer>() {

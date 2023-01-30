@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        PolyB polyB = new PolyB();
-        polyB.myMethod();
+        PolyA poly = new PolyB();
+        poly.myMethod();
 
     }
 }

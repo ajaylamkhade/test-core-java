@@ -20,14 +20,14 @@ public class Customer {
             return false;
         }
         Customer customer =(Customer)o;
-        if (customer.salary!=this.salary){
-            return false;
+        if (customer.salary==this.salary){
+            return true;
         }
 
         if (this.name!=null?!this.name.equals(customer.name):customer.name!=null){
             return false;
         }
-        return true;
+        return false;
     }
 
     @Override
